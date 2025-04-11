@@ -35,7 +35,7 @@ This is a collection of scripts, interim data, and results for using the MDCR da
 | Data Type | Total Records | Total Enrollees | Cohort Records | Cohort Patients |
 |-----------|---------------|----------------|----------------|-----------------|
 | Lab data (r) | 266,233,174 | 1,038,823 | 29,258* | 1,833 |
-| Inpatient service (s) | 463759602 | 7545916 | 453007 | 3318 |
+| Inpatient service (s) | 158,766,848 | 1,816,692 | 365,734 | 3,280 |
 | Inpatient admission (i) | 3,959,288 | 1,816,691 | 9,652 | 3,280 |
 | Outpatient service (o) | 1,274,602,087 | 6,051,468 | 4,705,885 | 5,813 |
 | Outpatient pharmaceutical (d) | 533,137,777 | 4,963,073 | 24,906,065 | 5,814 |
