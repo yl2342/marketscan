@@ -27,7 +27,7 @@
    - 5 years: 70,393 patients (9.74%)
         
 
-## Data Summary Tables
+### Data Summary Tables
 
 | Data Type | Total Records | Total Enrollees | Cohort Records | Cohort Patients |
 |-----------|---------------|----------------|----------------|-----------------|
@@ -40,7 +40,7 @@
 *Selected lab records for the baseline semaglutide cohort (BP, BMI, WEIGHT, HBA1C, CHOLESTEROL)
 
 
-## Table 1: Cohort Characteristics
+### Table 1: Cohort Characteristics
 | | | | Grouped by DIABETES_HISTORY | | | |
 |---|---|---|---|---|---|---|
 | | | Missing | Overall | No | Yes | P-Value |
@@ -57,10 +57,22 @@
 | Average Monthly Out-of-Pocket ($), median [Q1,Q3] | | 0 | 146.5 [85.5,228.7] | 117.0 [63.8,193.2] | 154.3 [92.2,236.2] | <0.001 |
 
 
-## Expenditure outcome
+### Expenditure outcome
 - Model specification
-  - 
+  - 4 12-month periods
+  - Random effect
+    - Outcome: Monthly cost (Aggregated for all calendar months identified)
+      - Source:
+        - Total (Inpatient admission + Outpatient service + Outpatient drugs)
+        - Inpatient admission
+        - Outpatient service
+        - Outpatient pharmaceutical
+      - Payment type:
+        - Total payment
+        - Out-of-pocket payment (OOP): Deductible + Copay + Coinsurance
 
+- Result:
+  - ![Expenditure Outcome](./p4_12m.png)
 
 
 
