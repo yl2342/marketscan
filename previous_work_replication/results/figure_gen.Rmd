@@ -1,0 +1,305 @@
+---
+title: "Semaglutide real world impact analysis - Figures"
+author: "Yuntian Liu"
+date: '2024-12-05'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+
+# List of required packages
+packages <- c(
+  # Data manipulation
+  "dplyr", "data.table", "tidyr", "stringr", "lubridate", "haven",
+  # tables and figures
+  "gtsummary", "table1","gt", "ggplot2","patchwork"
+)
+
+
+# Function to install and load packages
+install_and_load <- function(packages) {
+  for (package in packages) {
+    if (!require(package, character.only = TRUE, quietly = TRUE)) {
+      message(sprintf("Installing package: %s", package))
+      install.packages(package, quiet = TRUE)
+      library(package, character.only = TRUE, quietly = TRUE)
+    }
+  }
+}
+
+# Install and load all packages
+install_and_load(packages)
+
+wd_path <- "~/Desktop/Yale/PhD/Research/marketscan/previous_work_replication"
+output_path <- "~/Desktop/Yale/PhD/Research/marketscan/previous_work_replication/results"
+
+
+
+```
+
+
+
+## CCAE
+```{r,echo = FALSE, fig.width= 13, fig.height=8, fig.align='center', dpi=300} 
+
+#######################
+## total expenditure ##
+#######################
+# read semaglutide_p4_12m_event_study_results.csv
+ccae_expenditure_p4_12m <- read.csv(file.path(wd_path,"ccae/ccae_p4_12m_event_study_results.csv")) %>%
+  mutate(
+    # Extract pay_type from Outcome
+    pay_type = case_when(
+      grepl("TOTAL_PAY", Outcome) ~ "Monthly total payment",
+      grepl("OOP", Outcome) ~ "Monthly OOP expenditure",
+      TRUE ~ NA_character_
+    ),
+    # Extract settings from Outcome
+    settings = case_when(
+      grepl("OVERALL", Outcome) & (!grepl("NON_SEMAGLUTIDE", Outcome)) ~ "overall",
+      grepl("OVERALL", Outcome) & (grepl("NON_SEMAGLUTIDE", Outcome)) ~ "overall excl. semaglutide",
+      grepl("INPATIENT", Outcome) ~ "inpatient",
+      grepl("OUTPATIENT_SERVICE", Outcome)~ "outpatient service",
+      grepl("OUTPATIENT_PHARMACEUTICALS", Outcome) &(!grepl("NON_SEMAGLUTIDE", Outcome)) ~ "outpatient pharmaceutical",
+      grepl("OUTPATIENT_PHARMACEUTICALS", Outcome)  & (grepl("NON_SEMAGLUTIDE", Outcome)) ~ "outpatient pharmaceutical excl. semaglutide",
+      TRUE ~ NA_character_
+    ),
+    
+    # Create factor variables with ordered levels
+    pay_type = factor(pay_type, levels = c("Monthly total payment", "Monthly OOP expenditure")),
+    settings = factor(settings, levels = c("overall","overall excl. semaglutide",
+                                           "inpatient", "outpatient service", 
+                                           "outpatient pharmaceutical",
+                                           "outpatient pharmaceutical excl. semaglutide")),
+    
+    # Process Cohort as in the original code
+    Cohort = factor(str_trim(Cohort, side = "both"), 
+                    levels = c('1.Overall (N=70393)','2.Diabetic (N=55787)','3.Non-diabetic (N=14606)'))
+  ) %>% 
+  mutate(P = '4 Periods (12 months)') %>%
+  filter(grepl("^2", Model)) %>% ## random effect model only
+  mutate(
+    period = case_when(
+      period == -2 ~'[-24m,-12m)',
+      period == -1 ~'[-12m,Index)',
+      period == 0 ~'[Index,12m)',
+      period == 1 ~'[12m,24m)',
+      period == 2 ~'[24m,36m)',
+      TRUE ~ NA_character_),
+    period = factor(period, levels = c('[-24m,-12m)','[-12m,Index)','[Index,12m)','[12m,24m)','[24m,36m)'))
+  )
+
+
+(g_ccae_expenditure_p4_12m <- ggplot(marketscan_dynamic_effect_expenditure_total , 
+                                     aes(x = factor(period), y = estimate, 
+                                         color = Cohort,
+                                          shape = Cohort)) +
+    facet_grid(pay_type ~ settings, scales = "free")+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5) +
+    theme_bw() +
+    geom_errorbar(aes(ymin = conf.low, 
+                      ymax = conf.high), 
+                  width = 0.3,
+                  position = position_dodge(width = 0.5),
+                  linewidth = 1.,
+                  alpha = 0.8) +
+    geom_hline(yintercept = 0, linetype = 'dashed', color = 'grey', linewidth = 1) +
+    labs(x = "12-month-period", y = "Change relative to baseline") +
+    theme() +
+    theme(legend.position = "bottom",
+          plot.title = element_text(hjust = 0.5, face = "bold"),
+          axis.text.x = element_text(angle = 30, hjust = 1))+
+    scale_color_brewer("", palette = 'Set2')+
+    scale_shape_discrete(""))
+
+
+g_ccae_expenditure_p4_12m  %>%
+    ggsave(file.path(output_path,'ccae_expenditure_p4_12m.png'),.,
+           width= 16, height=6)
+
+
+
+
+```
+
+
+
+## MDCR
+```{r,echo = FALSE, fig.width= 13, fig.height=8, fig.align='center', dpi=300} 
+
+#######################
+## total expenditure ##
+#######################
+# read semaglutide_p4_12m_event_study_results.csv
+mdcr_expenditure_p4_12m <- read.csv(file.path(wd_path,"mdcr/mdcr_p4_12m_event_study_results.csv")) %>%
+  mutate(
+    # Extract pay_type from Outcome
+    pay_type = case_when(
+      grepl("TOTAL_PAY", Outcome) ~ "Monthly total payment",
+      grepl("OOP", Outcome) ~ "Monthly OOP expenditure",
+      TRUE ~ NA_character_
+    ),
+    # Extract settings from Outcome
+    settings = case_when(
+      grepl("OVERALL", Outcome) & (!grepl("NON_SEMAGLUTIDE", Outcome)) ~ "overall",
+      grepl("OVERALL", Outcome) & (grepl("NON_SEMAGLUTIDE", Outcome)) ~ "overall excl. semaglutide",
+      grepl("INPATIENT", Outcome) ~ "inpatient",
+      grepl("OUTPATIENT_SERVICE", Outcome)~ "outpatient service",
+      grepl("OUTPATIENT_PHARMACEUTICALS", Outcome) &(!grepl("NON_SEMAGLUTIDE", Outcome)) ~ "outpatient pharmaceutical",
+      grepl("OUTPATIENT_PHARMACEUTICALS", Outcome)  & (grepl("NON_SEMAGLUTIDE", Outcome)) ~ "outpatient pharmaceutical excl. semaglutide",
+      TRUE ~ NA_character_
+    ),
+    
+    # Create factor variables with ordered levels
+    pay_type = factor(pay_type, levels = c("Monthly total payment", "Monthly OOP expenditure")),
+    settings = factor(settings, levels = c("overall","overall excl. semaglutide",
+                                           "inpatient", "outpatient service", 
+                                           "outpatient pharmaceutical",
+                                           "outpatient pharmaceutical excl. semaglutide")),
+    
+    # Process Cohort as in the original code
+    Cohort = factor(str_trim(Cohort, side = "both"), 
+                    levels = c('1.Overall (N=5814)','2.Diabetic (N=5508)','3.Non-diabetic (N=306)'))
+  ) %>% 
+  mutate(P = '4 Periods (12 months)') %>%
+  filter(grepl("^2", Model)) %>% ## random effect model only
+  mutate(
+    period = case_when(
+      period == -2 ~'[-24m,-12m)',
+      period == -1 ~'[-12m,Index)',
+      period == 0 ~'[Index,12m)',
+      period == 1 ~'[12m,24m)',
+      period == 2 ~'[24m,36m)',
+      TRUE ~ NA_character_),
+    period = factor(period, levels = c('[-24m,-12m)','[-12m,Index)','[Index,12m)','[12m,24m)','[24m,36m)'))
+  )
+
+
+(g_mdcr_expenditure_p4_12m <- ggplot(mdcr_expenditure_p4_12m , 
+                                     aes(x = factor(period), y = estimate, 
+                                         color = Cohort,
+                                          shape = Cohort)) +
+    facet_grid(pay_type ~ settings, scales = "free")+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5) +
+    theme_bw() +
+    geom_errorbar(aes(ymin = conf.low, 
+                      ymax = conf.high), 
+                  width = 0.3,
+                  position = position_dodge(width = 0.5),
+                  linewidth = 1.,
+                  alpha = 0.8) +
+    geom_hline(yintercept = 0, linetype = 'dashed', color = 'grey', linewidth = 1) +
+    labs(x = "12-month-period", y = "Change relative to baseline") +
+    theme() +
+    theme(legend.position = "bottom",
+          plot.title = element_text(hjust = 0.5, face = "bold"),
+          axis.text.x = element_text(angle = 30, hjust = 1))+
+    scale_color_brewer("", palette = 'Set2')+
+    scale_shape_discrete(""))
+
+
+g_mdcr_expenditure_p4_12m  %>%
+    ggsave(file.path(output_path,'mdcr_expenditure_p4_12m.png'),.,
+           width= 16, height=6)
+
+
+
+
+```
+
+
+
+
+## Medicaid
+```{r,echo = FALSE, fig.width= 13, fig.height=8, fig.align='center', dpi=300} 
+
+#######################
+## total expenditure ##
+#######################
+# read semaglutide_p4_12m_event_study_results.csv
+medicaid_expenditure_p4_12m <- read.csv(file.path(wd_path,"medicaid/medicaid_p4_12m_event_study_results.csv")) %>%
+  mutate(
+    # Extract pay_type from Outcome
+    pay_type = case_when(
+      grepl("TOTAL_PAY", Outcome) ~ "Monthly total payment",
+      grepl("OOP", Outcome) ~ "Monthly OOP expenditure",
+      TRUE ~ NA_character_
+    ),
+    # Extract settings from Outcome
+    settings = case_when(
+      grepl("OVERALL", Outcome) & (!grepl("NON_SEMAGLUTIDE", Outcome)) ~ "overall",
+      grepl("OVERALL", Outcome) & (grepl("NON_SEMAGLUTIDE", Outcome)) ~ "overall excl. semaglutide",
+      grepl("INPATIENT", Outcome) ~ "inpatient",
+      grepl("OUTPATIENT_SERVICE", Outcome)~ "outpatient service",
+      grepl("OUTPATIENT_PHARMACEUTICALS", Outcome) &(!grepl("NON_SEMAGLUTIDE", Outcome)) ~ "outpatient pharmaceutical",
+      grepl("OUTPATIENT_PHARMACEUTICALS", Outcome)  & (grepl("NON_SEMAGLUTIDE", Outcome)) ~ "outpatient pharmaceutical excl. semaglutide",
+      TRUE ~ NA_character_
+    ),
+    
+    # Create factor variables with ordered levels
+    pay_type = factor(pay_type, levels = c("Monthly total payment", "Monthly OOP expenditure")),
+    settings = factor(settings, levels = c("overall","overall excl. semaglutide",
+                                           "inpatient", "outpatient service", 
+                                           "outpatient pharmaceutical",
+                                           "outpatient pharmaceutical excl. semaglutide")),
+    
+    # Process Cohort as in the original code
+    Cohort = factor(str_trim(Cohort, side = "both"), 
+                    levels = c('1.Overall (N=5587)','2.Diabetic (N=5188)','3.Non-diabetic (N=399)'))
+  ) %>% 
+  mutate(P = '4 Periods (12 months)') %>%
+  filter(grepl("^2", Model)) %>% ## random effect model only
+  mutate(
+    period = case_when(
+      period == -2 ~'[-24m,-12m)',
+      period == -1 ~'[-12m,Index)',
+      period == 0 ~'[Index,12m)',
+      period == 1 ~'[12m,24m)',
+      period == 2 ~'[24m,36m)',
+      TRUE ~ NA_character_),
+    period = factor(period, levels = c('[-24m,-12m)','[-12m,Index)','[Index,12m)','[12m,24m)','[24m,36m)'))
+  )
+
+
+(g_medicaid_expenditure_p4_12m <- ggplot(medicaid_expenditure_p4_12m , 
+                                     aes(x = factor(period), y = estimate, 
+                                         color = Cohort,
+                                          shape = Cohort)) +
+    facet_grid(pay_type ~ settings, scales = "free")+
+    geom_point(position = position_dodge(width = 0.5), size = 1.5) +
+    theme_bw() +
+    geom_errorbar(aes(ymin = conf.low, 
+                      ymax = conf.high), 
+                  width = 0.3,
+                  position = position_dodge(width = 0.5),
+                  linewidth = 1.,
+                  alpha = 0.8) +
+    geom_hline(yintercept = 0, linetype = 'dashed', color = 'grey', linewidth = 1) +
+    labs(x = "12-month-period", y = "Change relative to baseline") +
+    theme() +
+    theme(legend.position = "bottom",
+          plot.title = element_text(hjust = 0.5, face = "bold"),
+          axis.text.x = element_text(angle = 30, hjust = 1))+
+    scale_color_brewer("", palette = 'Set2')+
+    scale_shape_discrete(""))
+
+
+g_medicaid_expenditure_p4_12m  %>%
+    ggsave(file.path(output_path,'medicaid_expenditure_p4_12m.png'),.,
+           width= 16, height=6)
+
+
+
+
+```
+
+
+
+
+
+
+
+
+

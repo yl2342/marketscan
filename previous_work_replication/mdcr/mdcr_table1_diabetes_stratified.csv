@@ -1,0 +1,15 @@
+,,Grouped by Diabetes history,Grouped by Diabetes history,Grouped by Diabetes history,Grouped by Diabetes history,Grouped by Diabetes history
+,,Missing,Overall,No Prior Diabetes,Prior Diabetes,P-Value
+n,,,5814,306,5508,
+"Age, median [Q1,Q3]",,0,"72.0 [69.0,75.0]","70.0 [68.0,73.0]","72.0 [69.0,75.0]",<0.001
+"Sex, n (%)",Female,,2986 (51.4),223 (72.9),2763 (50.2),<0.001
+"Sex, n (%)",Male,,2828 (48.6),83 (27.1),2745 (49.8),
+"First semaglutide - brand name, n (%)",Ozempic,,4510 (77.6),246 (80.4),4264 (77.4),<0.001
+"First semaglutide - brand name, n (%)",RYBELSUS,,1290 (22.2),51 (16.7),1239 (22.5),
+"First semaglutide - brand name, n (%)",WEGOVY,,14 (0.2),9 (2.9),5 (0.1),
+"First semaglutide - dosage form, n (%)","INJECTION, SOLUTION",,4524 (77.8),255 (83.3),4269 (77.5),0.020
+"First semaglutide - dosage form, n (%)",TABLET,,1290 (22.2),51 (16.7),1239 (22.5),
+"First semaglutide - total payment, median [Q1,Q3]",,0,"851.3 [769.3,1536.3]","1051.4 [799.6,1457.9]","847.2 [768.2,1536.3]",0.064
+"First semaglutide - out-of-pocket payment, median [Q1,Q3]",,0,"40.2 [0.0,60.0]","45.0 [15.0,75.0]","40.0 [0.0,56.0]",<0.001
+"Average monthly total payment, median [Q1,Q3]",,0,"1612.7 [1032.0,2523.0]","1000.9 [635.3,1604.2]","1652.8 [1068.0,2574.7]",<0.001
+"Average monthly out-of-pocket payment, median [Q1,Q3]",,0,"88.6 [55.6,134.0]","77.3 [46.8,112.1]","89.2 [56.0,135.3]",<0.001
