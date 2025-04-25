@@ -1,129 +1,87 @@
 # Provider Exploration
-
+----
 ### CCAE 
-#### Inpatient service S
-- Total number of records: 457,340,872
-- Total number of unique ENROLID: 9,326,880
-- NPI
-  - An encrypted National Provider Identifier number
-  - Total number of unique NPI: 984,380
-  - NPI missing rate: 53.38%
-- PROVIDER ID
-  - Identifier for provider of service used by the carrier Encrypted as of 2001 data
-  - Total number of unique PROVIDER ID: 464,462
-  - PROVIDER ID missing rate: 63.49%
-- NPI and PROVIDER ID
-  - Total number of distinct NPI and PROVIDER ID pair: 2,075,020
-  - Percentage of NPIs with multiple PROVIDER IDs: 28.75%
-  - Percentage of PROVIDER IDs with multiple NPIs: 20.24%
-- STDPROV
-  - STDPROV missing rate: 1.91%
-  - STDPROV category distribution (inpatient service records)
-    - Facility: 246,283,187
-    - Admitting Physicians: 104,629,755
-    - Non-admitting Physicians: 72,825,171
-    - Surgeons: 12,677,127
-    - Unknown: 8,725,682
-    - Professionals (Non-Physician): 8,666,746
-    - Agencies: 3,533,204
-  - STDPROV category distribution (unique ENROLID counts):
-    - Facility: 8,873,783
-    - Admitting Physicians: 8,152,566
-    - Non-admitting Physicians: 6,131,938
-    - Professionals (Non-Physician): 2,181,781
-    - Surgeons: 2,112,505
-    - Unknown: 658,111
-    - Agencies: 475,221
-  - STDPROV category distribution (unique NPI counts):
-    - Admitting Physicians: 687,510
-    - Professionals (Non-Physician): 283,317
-    - Non-admitting Physicians: 205,475
-    - Surgeons: 146,478
-    - Unknown: 139,157
-    - Facility: 107,895
-    - Agencies: 46,814
-  - STDPROV category distribution (unique PROVIDER ID counts):
-    - Admitting Physicians: 290,652
-    - Non-admitting Physicians: 93,361
-    - Professionals (Non-Physician): 50,767
-    - Surgeons: 48,926
-    - Facility: 48,901
-    - Unknown: 42,332
-    - Agencies: 12,817
 
-- **Provider -  Distinct Enrolled count** 
-  - Select only Admitting Physicians, Professionals (Non-Physician), Non-admitting Physicians
-  - Select only records with distinct_enrolid_count [1,200]
-  - NPI 
-    - Providers with zero enrollees: 1083 (0.05% of total)
-    - Providers with more than 200 enrollees: 12485 (0.59% of total)
-    - NPI provider category I distribution
-      - Admitting Physicians    1,478,321
-      - Professionals (Non-Physician)     376,733
-      - Non-admitting Physicians          257,354
-    - NPI provider category II distribution (TOP 10)
-      - 204-Internal Medicine (NEC)          217,514
-      - 240-Family Practice                  142,692
-      - 200-Medical Doctor - MD (NEC)        136,108
-      - 825-Nurse Practitioner               106,228
-      - 150-Anesthesiology                   105,963
-      - 220-Emergency Medicine               105,057
-      - 400-Pediatrician (NEC)                98,251
-      - 320-Obstetrics & Gynecology           91,315
-      - 845-Physician Assistant               89,425
-      - 250-Cardiovascular Dis/Cardiology     82,632
-    - Histogram of associated distinct_enrolid_count by provider category I
-      ![Enrollee Distribution by Provider Category](output/npi_enrollee_distribution_by_provider_category.png)
-    - Histogram of associated distinct_enrolid_count by top 9 provider category II
-      ![Enrollee Distribution by Provider Category](output/npi_enrollee_distribution_by_top_provider_types.png)
-  - Provider ID
-    - Providers with zero enrollees: 402 (0.07% of total)
-    - Providers with more than 200 enrollees: 10727 (1.76% of total)
-    - Provider ID provider category I distribution
-      - Admitting Physicians             423,094
-      - Non-admitting Physicians         102,815
-      - Professionals (Non-Physician)     71,947
-    - Provider ID provider category II distribution (TOP 10)
-      - 204-Internal Medicine (NEC)          67,397
-      - 180-Radiology                        40,283
-      - 200-Medical Doctor - MD (NEC)        38,003
-      - 150-Anesthesiology                   33,473
-      - 240-Family Practice                  32,708
-      - 320-Obstetrics & Gynecology          30,050
-      - 220-Emergency Medicine               30,046
-      - 250-Cardiovascular Dis/Cardiology    28,147
-      - 400-Pediatrician (NEC)               27,860
-      - 845-Physician Assistant              18,390
-    - Histogram of associated distinct_enrolid_count by provider category I
-      ![Enrollee Distribution by Provider Category](output/provid_enrollee_distribution_by_provider_category.png)
-    - Histogram of associated distinct_enrolid_count by top 9 provider category II
-      ![Enrollee Distribution by Provider Category](output/provid_enrollee_distribution_by_top_provider_types.png)
-    
+#### Provider Identifiers in Source Data
+
+| Provider ID Type | Data Source | Unique Count | Missing Rate |
+|------------------|-------------|--------------|--------------|
+| NPI              | Inpatient service   | 984,380      | 53.38%       |
+| PROVID           | Inpatient service   | 464,462      | 63.49%       |
+| NPI              | Outpatient service  | 2,843,006    | 53.63%       |
+| PROVID           | Outpatient service  | 2,216,570    | 66.39%       |
+
+#### Combined Provider Statistics
+
+| Provider ID Type | Total Unique Count | Count with Both Inpatient & Outpatient Enrollees | Percentage |
+|------------------|--------------------|-------------------------------------------------|------------|
+| NPI              | 11,417,653         | 2,191,261                                       | 19.19%     |
+| PROVID           | 4,290,577          | 620,146                                         | 14.45%     |
 
 
-#### Outpatient service O
-- Total number of records: 6,930,282,387
-- Total number of unique ENROLID: 89,709,466
-- NPI
-  - An encrypted National Provider Identifier number
-  - Total number of unique NPI: 2,216,570
-  - NPI missing rate: 53.63%
-- PROVIDER ID
-  - Identifier for provider of service used by the carrier Encrypted as of 2001 data
-  - Total number of unique PROVIDER ID: 464,462
-  - PROVIDER ID missing rate: 66.39%
-- NPI and PROVIDER ID
-  - Total number of distinct NPI and PROVIDER ID pair: 7,862,908
-  - Percentage of NPIs with multiple PROVIDER IDs: 41.59%
-  - Percentage of PROVIDER IDs with multiple NPIs: 20.83%
-- STDPROV
-  - STDPROV missing rate: 1.91%
+#### Distinct Enrollee Counts per Provider (Restricted to Physician)
+![Distribution of Enrollee Counts per Provider (NPI) in CCAE](output/enrollee_dist_NPI_ccae.png)
+![Distribution of Enrollee Counts per Provider (PROVID) in CCAE](output/enrollee_dist_PROVID_ccae.png)
+
+
+---
+### MDCR
+
+#### Provider Identifiers in Source Data
+
+| Provider ID Type | Data Source | Unique Count | Missing Rate |
+|------------------|-------------|--------------|--------------|
+| NPI              | Inpatient service   | 553,809      | 53.07%       |
+| PROVID           | Inpatient service   | 330,970      | 65.82%       |
+| NPI              | Outpatient service  | 1,525,749    | 54.19%       |
+| PROVID           | Outpatient service  | 1,173,611    | 62.35%       |
+
+#### Combined Provider Statistics
+
+| Provider ID Type | Total Unique Count | Count with Both Inpatient & Outpatient Enrollees | Percentage |
+|------------------|--------------------|-------------------------------------------------|------------|
+| NPI              | 3,707,611          | 864,436                                        | 23.32%     |
+| PROVID           | 1,913,181          | 377,586                                        | 19.74%     |
+
+
+#### Distinct Enrollee Counts per Provider (Restricted to Physician)
+![Distribution of Enrollee Counts per Provider (NPI) in MDCR](output/enrollee_dist_NPI_medicare.png)
+![Distribution of Enrollee Counts per Provider (PROVID) in MDCR](output/enrollee_dist_PROVID_medicare.png)
+
+--- 
+### Medicaid
+#### Provider Identifiers in Source Data
+
+| Provider ID Type | Data Source | Unique Count | Missing Rate |
+|------------------|-------------|--------------|--------------|
+| NPI              | Inpatient service   | 238,884      | 24.58%       |
+| PROV_ID          | Inpatient service   | 412,191      | 43.06%       |
+| NPI              | Outpatient service  | 558,804      | 23.54%       |
+| PROV_ID          | Outpatient service  | 1,073,251    | 42.08%       |
+
+#### Combined Provider Statistics
+
+| Provider ID Type | Total Unique Count | Count with Both Inpatient & Outpatient Enrollees | Percentage |
+|------------------|--------------------|-------------------------------------------------|------------|
+| NPI              | 909,015            | 302,626                                        | 33.29%     |
+| PROV_ID          | 1,324,546          | 405,512                                        | 30.62%     |
 
 
 
+#### Distinct Enrollee Counts per Provider (Restricted to Physician)
+![Distribution of Enrollee Counts per Provider (NPI) in Medicaid](output/enrollee_dist_NPI_medicaid.png)
+![Distribution of Enrollee Counts per Provider (PROV_ID) in Medicaid](output/enrollee_dist_PROV_ID_medicaid.png)
 
 
-#### STDPROV REFERENCE TABLE:
+
+---
+### Combined souces together
+![Distribution of Enrollee Counts per Provider (NPI) in combined sources](output/enrollee_dist_npi_all_sources.png)
+
+
+---
+
+## STDPROV REFERENCE TABLE:
 | Code | Description |
 |------|-------------|
 | . | .-Missing/Unknown |
