@@ -19,12 +19,6 @@
 | PROVID           | 4,290,577          | 620,146                                         | 14.45%     |
 
 
-#### Distinct Enrollee Counts per Provider (Restricted to Physician)
-![Distribution of Enrollee Counts per Provider (NPI) in CCAE](output/enrollee_dist_NPI_ccae.png)
-![Distribution of Enrollee Counts per Provider (PROVID) in CCAE](output/enrollee_dist_PROVID_ccae.png)
-
-
----
 ### MDCR
 
 #### Provider Identifiers in Source Data
@@ -44,9 +38,13 @@
 | PROVID           | 1,913,181          | 377,586                                        | 19.74%     |
 
 
-#### Distinct Enrollee Counts per Provider (Restricted to Physician)
-![Distribution of Enrollee Counts per Provider (NPI) in MDCR](output/enrollee_dist_NPI_medicare.png)
-![Distribution of Enrollee Counts per Provider (PROVID) in MDCR](output/enrollee_dist_PROVID_medicare.png)
+### Combined CCAE and MDCR (Only Physicians)
+#### All-time enrollees per NPI 
+![All-time enrollees per NPI (CCAE + MDCR)](output/alltime_enrollee_dist_NPI_ccae_medicare.png)
+
+#### Annual enrollees per NPI: **only select providers with all-time enrollees [10, 5000]**
+![Annual enrollees per PROVID (CCAE + MDCR)](output/annual_enrollee_dist_NPI_ccae_medicare.png)
+
 
 --- 
 ### Medicaid
@@ -68,17 +66,12 @@
 
 
 
-#### Distinct Enrollee Counts per Provider (Restricted to Physician)
-![Distribution of Enrollee Counts per Provider (NPI) in Medicaid](output/enrollee_dist_NPI_medicaid.png)
-![Distribution of Enrollee Counts per Provider (PROV_ID) in Medicaid](output/enrollee_dist_PROV_ID_medicaid.png)
 
+#### All-time enrollees per NPI (Only Physicians)
+![All-time enrollees per NPI (Medicaid)](output/alltime_enrollee_dist_NPI_medicaid.png)
 
-
----
-### Combined souces together
-![Distribution of Enrollee Counts per Provider (NPI) in combined sources](output/enrollee_dist_npi_all_sources.png)
-
-
+#### Annual enrollees per NPI (Only Physicians): **only select providers with all-time enrollees [10, 5000]**
+![Annual enrollees per PROVID (Medicaid)](output/annual_enrollee_dist_NPI_medicaid.png)
 ---
 
 ## STDPROV REFERENCE TABLE:
