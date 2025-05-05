@@ -38,12 +38,25 @@
 | PROVID           | 1,913,181          | 377,586                                        | 19.74%     |
 
 
-### Combined CCAE and MDCR (Only Physicians)
-#### All-time enrollees per NPI 
-![All-time enrollees per NPI (CCAE + MDCR)](output/alltime_enrollee_dist_NPI_ccae_medicare.png)
+### Combined CCAE and MDCR (Only Physicians NPI) for distribution of distinct enrollees of physicians by provider type
+#### Physicians with all-time enrollees [20, 5000]
+| Physician type | All-time | Annual |
+|----------------|----------|--------|
+| Overall admitting and non-admitting physicians (stdprov:100-499) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_100_499.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_100_499.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Medical Doctor - MD (NEC) (stdprov:200) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_200.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_200.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Internal Medicine (NEC) (stdprov:204) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_204.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_204.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Emergency Medicine (NEC) (stdprov:220) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_220.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_220.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Family Practice (stdprov:240) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_240.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_240.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Cardiovascular Dis/Cardiology (stdprov:250) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_250.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_250.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Endocrinology & Metabolism (stdprov:270) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_270.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_270.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Oncology (stdprov:380) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_380.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_380.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
+| Pediatrician (NEC) (stdprov:400) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_400.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_400.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
 
-#### Annual enrollees per NPI: **only select providers with all-time enrollees [10, 5000]**
-![Annual enrollees per PROVID (CCAE + MDCR)](output/annual_enrollee_dist_NPI_ccae_medicare.png)
+
+
+
+
+
 
 
 --- 
@@ -65,13 +78,25 @@
 | PROV_ID          | 1,324,546          | 405,512                                        | 30.62%     |
 
 
+### Medicaid distribution of distinct enrollees of physicians by provider type
+#### Physicians with all-time enrollees [20, 5000]
+| Physician type | All-time | Annual |
+|----------------|----------|--------|
+| Overall admitting and non-admitting physicians (stdprov:100-499) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_100_499.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_100_499.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Medical Doctor - MD (NEC) (stdprov:200) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_200.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_200.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Internal Medicine (NEC) (stdprov:204) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_204.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_204.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Emergency Medicine (NEC) (stdprov:220) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_220.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_220.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Family Practice (stdprov:240) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_240.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_240.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Cardiovascular Dis/Cardiology (stdprov:250) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_250.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_250.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Endocrinology & Metabolism (stdprov:270) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_270.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_270.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Oncology (stdprov:380) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_380.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_380.png" alt="Annual enrollees per NPI (Medicaid)"> |
+| Pediatrician (NEC) (stdprov:400) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_400.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_400.png" alt="Annual enrollees per NPI (Medicaid)"> |
 
 
-#### All-time enrollees per NPI (Only Physicians)
-![All-time enrollees per NPI (Medicaid)](output/alltime_enrollee_dist_NPI_medicaid.png)
 
-#### Annual enrollees per NPI (Only Physicians): **only select providers with all-time enrollees [10, 5000]**
-![Annual enrollees per PROVID (Medicaid)](output/annual_enrollee_dist_NPI_medicaid.png)
+
+
+
 ---
 
 ## STDPROV REFERENCE TABLE:
