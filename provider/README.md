@@ -39,11 +39,10 @@
 
 
 ### Combined CCAE and MDCR (Only Physicians NPI) for distribution of distinct enrollees of physicians by provider type
-#### Physicians with all-time enrollees [20, 5000]
+#### Physicians with all-time enrollees [200, 5000]
 | Physician type | All-time | Annual |
 |----------------|----------|--------|
 | Overall admitting and non-admitting physicians (stdprov:100-499) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_100_499.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_100_499.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
-| Medical Doctor - MD (NEC) (stdprov:200) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_200.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_200.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
 | Internal Medicine (NEC) (stdprov:204) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_204.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_204.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
 | Emergency Medicine (NEC) (stdprov:220) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_220.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_220.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
 | Family Practice (stdprov:240) | <img src="output/alltime_enrollee_dist_NPI_ccae_mdcr_stdprov_240.png" alt="All-time enrollees per NPI (CCAE + MDCR)"> | <img src="output/annual_enrollee_dist_NPI_ccae_mdcr_stdprov_240.png" alt="Annual enrollees per NPI (CCAE + MDCR)"> |
@@ -79,11 +78,10 @@
 
 
 ### Medicaid distribution of distinct enrollees of physicians by provider type
-#### Physicians with all-time enrollees [20, 5000]
+#### Physicians with all-time enrollees [50, 5000]
 | Physician type | All-time | Annual |
 |----------------|----------|--------|
 | Overall admitting and non-admitting physicians (stdprov:100-499) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_100_499.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_100_499.png" alt="Annual enrollees per NPI (Medicaid)"> |
-| Medical Doctor - MD (NEC) (stdprov:200) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_200.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_200.png" alt="Annual enrollees per NPI (Medicaid)"> |
 | Internal Medicine (NEC) (stdprov:204) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_204.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_204.png" alt="Annual enrollees per NPI (Medicaid)"> |
 | Emergency Medicine (NEC) (stdprov:220) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_220.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_220.png" alt="Annual enrollees per NPI (Medicaid)"> |
 | Family Practice (stdprov:240) | <img src="output/alltime_enrollee_dist_NPI_medicaid_stdprov_240.png" alt="All-time enrollees per NPI (Medicaid)"> | <img src="output/annual_enrollee_dist_NPI_medicaid_stdprov_240.png" alt="Annual enrollees per NPI (Medicaid)"> |
